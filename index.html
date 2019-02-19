@@ -1,17 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>TARDIS Tech Scheduler - MBSync</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/dc.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+
+    <script type="text/javascript" src="assets/js/d3.min.js"></script>
+    <script type="text/javascript" src="assets/js/crossfilter.js"></script>
+    <script type="text/javascript" src="assets/js/dc.min.js"></script>
+    <script type="text/javascript" src="assets/js/queue.min.js"></script>
+
 </head>
+
 <body>
-    
-    
-    <script>
-        var APIKey = "AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ";
-    </script>
+    <!--Nav Bar-->
+    <nav class="container-fluid">
+        <div class="row">
+            <nav class="navbar nav-bg-color nav-main">
+                <a class="navbar-brand navbar-head" href="#">MB<span class="text-white">Sync</span></a>
+            </nav>
+        </div>
+    </nav>
+    <!--Analytics Dashboard-->
+    <section class="container-fluid">
+        <div class="row bg-darken">
+            <div class="col-12 col-md-4">
+                <h2>Filter by Service Manager</h2>
+            </div>
+            <div class="col-12 col-md-4">
+                <h2>Work by Service Manager</h2>
+                <div id="work-by-som"></div>
+            </div>
+            <div class="col-12 col-md-4">
+                <h2>Total TARDIS Work</h2>
+                <div id="total-work"></div>
+            </div>
+        </div>
+    </section>
+    <!--Tech Scheduler-->
+    <section class="container-fluid">
+        <div class="row">
+            <h1 class="col-12">Tech Scheduler</h1>
+        </div>
+        <!--Tech Scheduler - Nav-->
+        <div class="row">
+            <div class="col-2">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Jason Lowd
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Matt Lindgren</a>
+                        <a class="dropdown-item" href="#">Reece Jones</a>
+                        <a class="dropdown-item" href="#">Angel Bangeev</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        18.02.19
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">11.02.19</a>
+                        <a class="dropdown-item" href="#">04.02.19</a>
+                        <a class="dropdown-item" href="#">28.01.19</a>
+                        <a class="dropdown-item" href="#">21.01.19</a>
+                        <a class="dropdown-item" href="#">14.01.19</a>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-4 col-4">
+                <input type="search" class="form-control ds-input" id="Enter Restaurant" placeholder="Search..." autocomplete="off" data-docs-version="4.3" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
+                    dir="auto" style="position: relative; vertical-align: top;">
+            </div>
+        </div>
+        <!--Tech Scheduler - Analytics & Schedule of works-->
+        <div class="row">
+            <div class="col-4">
+                <h3>Weekly Analytics</h3>
+            </div>
+            <div class="col-8">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                    <tr>
+                        <th>AM</th>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                    </tr>
+                    <tr>
+                        <th>PM</th>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                        <td>000 - Restaurant Name</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!--Map, Hotels & Restaurants-->
+    <section class="container-fluid">
+        <div class="row">
+            <!--Google API-->
+            <div class="col-4">
+                <div class="map"></div>
+            </div>
+            <div class="col-4">
+                <p>Premier Inn Hemel Hempstead</p>
+                <p>Premier Inn Hemel Hempstead</p>
+                <p>Premier Inn Hemel Hempstead</p>
+            </div>
+            <div class="col-4">
+                <h4>Nearby Restaurants</h4>
+                <p>000 - Restaurant Name</p>
+                <p>000 - Restaurant Name</p>
+                <p>000 - Restaurant Name</p>
+                <p>000 - Restaurant Name</p>
+                <p>000 - Restaurant Name</p>
+            </div>
+        </div>
+    </section>
+    <!--Footer-->
+    <footer class="container-fluid">
+        <div class="row">
+            
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ&callback=initMap"></script>
 </body>
+
 </html>
