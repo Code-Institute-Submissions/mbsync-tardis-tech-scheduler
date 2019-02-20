@@ -1,0 +1,122 @@
+/*-----------------------------------Colors*/
+
+.bg-header-color {
+    background-color: #1e3163;
+}
+
+.bg-black-opacity {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-black {
+    background: #1e1e1e;
+}
+
+.bg-electric-blue {
+    background-color: #09f;
+}
+
+.text-white {
+    color: #fff;
+}
+
+/*-----------------------------------Elements*/
+
+body {
+    background: url("../images/aggregate-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    object-fit: cover;
+    color: #fff;
+    font-family: 'proxima_novaregular', Arial, sans-serif;
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+/*-----------------------------------Tech Scheduler - Header*/
+
+.header-main {
+    width: 100%;
+    min-height: 89px;
+    padding: 40px 0 0 0;
+    color: #82bef1;
+}
+
+.header-main h1 {
+    font-size: 58px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: #82bef1;
+    padding: 0 0 0 40px;
+
+}
+
+.header-main h1 span {
+    font-weight: 500;
+}
+
+/*-----------------------------------Tech Scheduler - Navs*/
+
+.scheduler-nav-btn {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.scheduler-nav {
+    position: relative;
+    display: inline-block;
+}
+
+.scheduler-nav i {
+    font-size: 20px;
+}
+
+.scheduler-nav-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    height: 200px;
+    overflow: auto;
+}
+
+.scheduler-nav-content a {
+    color: inherit;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.scheduler-nav-content a:hover {
+}
+
+.scheduler-nav:hover .scheduler-nav-content {
+    display: block;
+}
+
+.scheduler-nav:hover .scheduler-nav-btn {
+}
+
+/*-----------------------------------Tech Scheduler - Analytics Dashboard*/
+
+.section-dashboard {
+    height: 100vh;
+}
+
+.section-dashboard .row {
+    text-align: center;
+    height: 300px;
+}
+
+/*-----------------------------------Tech Scheduler - Scheduler*/
+
+.header-scheduler h3 {
+    margin: auto 0;
+}

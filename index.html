@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/dc.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
     <script type="text/javascript" src="assets/js/d3.min.js"></script>
@@ -20,25 +21,26 @@
 </head>
 
 <body>
-    <!--Nav Bar-->
-    <nav class="container-fluid">
+    <!--MBSync Header-->
+    <header class="container-fluid">
         <div class="row">
-            <nav class="navbar nav-bg-color nav-main">
-                <a class="navbar-brand navbar-head" href="#">MB<span class="text-white">Sync</span></a>
-            </nav>
+            <div class="bg-header-color header-main">
+                <h1>MB<span class="text-white">Sync</span></h1>
+            </div>
         </div>
-    </nav>
+    </header>
     <!--Analytics Dashboard-->
-    <section class="container-fluid">
-        <div class="row bg-darken">
-            <div class="col-12 col-md-4">
+    <section class="container-fluid section-dashboard">
+        <div class="row bg-black-opacity">
+            <div class="col-12 col-md-4 test-code">
                 <h2>Filter by Service Manager</h2>
+                <div id="filter-by-sm"></div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 test-code">
                 <h2>Work by Service Manager</h2>
-                <div id="work-by-som"></div>
+                <div id="work-by-sm"></div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 test-code">
                 <h2>Total TARDIS Work</h2>
                 <div id="total-work"></div>
             </div>
@@ -46,34 +48,30 @@
     </section>
     <!--Tech Scheduler-->
     <section class="container-fluid">
-        <div class="row">
-            <h1 class="col-12">Tech Scheduler</h1>
+        <div class="row bg-electric-blue header-scheduler">
+            <h3 class="col-12">Tech Scheduler</h3>
         </div>
         <!--Tech Scheduler - Nav-->
-        <div class="row">
+        <div class="row bg-black">
             <div class="col-2">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Jason Lowd
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Matt Lindgren</a>
-                        <a class="dropdown-item" href="#">Reece Jones</a>
-                        <a class="dropdown-item" href="#">Angel Bangeev</a>
+                <div class="scheduler-nav">
+                    <button class="scheduler-nav-btn bg-black text-white">Jason Lowde<i class="fas fa-chevron-down"></i></button>
+                    <div class="scheduler-nav-content bg-black">
+                        <a href="#">Matt Lindgren</a>
+                        <a href="#">Reece Jones</a>
+                        <a href="#">Angel Bangeev</a>
                     </div>
                 </div>
             </div>
             <div class="col-2">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        18.02.19
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">11.02.19</a>
-                        <a class="dropdown-item" href="#">04.02.19</a>
-                        <a class="dropdown-item" href="#">28.01.19</a>
-                        <a class="dropdown-item" href="#">21.01.19</a>
-                        <a class="dropdown-item" href="#">14.01.19</a>
+                <div class="scheduler-nav">
+                    <button class="scheduler-nav-btn bg-black text-white">18.02.19<i class="fas fa-chevron-down"></i></button>
+                    <div class="scheduler-nav-content bg-black">
+                        <a href="#">11.02.19</a>
+                        <a href="#">04.02.19</a>
+                        <a href="#">28.01.19</a>
+                        <a href="#">21.01.19</a>
+                        <a href="#">14.01.19</a>
                     </div>
                 </div>
             </div>
@@ -81,45 +79,50 @@
                 <input type="search" class="form-control ds-input" id="Enter Restaurant" placeholder="Search..." autocomplete="off" data-docs-version="4.3" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
                     dir="auto" style="position: relative; vertical-align: top;">
             </div>
+            <hr class="my-5">
         </div>
         <!--Tech Scheduler - Analytics & Schedule of works-->
-        <div class="row">
+        <div class="row bg-black">
             <div class="col-4">
                 <h3>Weekly Analytics</h3>
             </div>
             <div class="col-8">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                    </tr>
-                    <tr>
-                        <th>AM</th>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                    </tr>
-                    <tr>
-                        <th>PM</th>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                        <td>000 - Restaurant Name</td>
-                    </tr>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Monday</th>
+                            <th scope="col">Tuesday</th>
+                            <th scope="col">Wednesday</th>
+                            <th scope="col">Thursday</th>
+                            <th scope="col">Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">AM</th>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PM</th>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                            <td>000-Restaurant Name</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
     </section>
     <!--Map, Hotels & Restaurants-->
     <section class="container-fluid">
-        <div class="row">
+        <div class="row bg-black">
             <!--Google API-->
             <div class="col-4">
                 <div class="map"></div>
@@ -142,7 +145,7 @@
     <!--Footer-->
     <footer class="container-fluid">
         <div class="row">
-            
+
         </div>
     </footer>
 
