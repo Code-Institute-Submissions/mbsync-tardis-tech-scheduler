@@ -13,11 +13,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
-    <script type="text/javascript" src="assets/js/d3.min.js"></script>
-    <script type="text/javascript" src="assets/js/crossfilter.js"></script>
-    <script type="text/javascript" src="assets/js/dc.min.js"></script>
-    <script type="text/javascript" src="assets/js/queue.min.js"></script>
-
 </head>
 
 <body>
@@ -32,19 +27,28 @@
     <!--Analytics Dashboard-->
     <section class="container-fluid section-dashboard">
         <div class="row bg-black-opacity">
-            <div class="col-12 col-md-4 test-code">
-                <h2>Filter by Service Manager</h2>
-                <div id="filter-by-sm"></div>
-            </div>
-            <div class="col-12 col-md-4 test-code">
-                <h2>Work by Service Manager</h2>
+            <div class="col-12 col-md-5">
+                <h2>By Service Manager</h2>
                 <div id="work-by-sm"></div>
             </div>
-            <div class="col-12 col-md-4 test-code">
-                <h2>Total TARDIS Work</h2>
-                <div id="total-work"></div>
+            <div class="col-12 col-md-2">
+                <i class="fa fa-warehouse" aria-hidden="true"></i> <span class="number-box" id="count-of-hh"></span>
+                <i class="fa fa-warehouse" aria-hidden="true"></i> <span class="number-box" id="count-of-hw"></span>
+            </div>
+            <div class="col-12 col-md-5">
+                <h2>By Job Category</h2>
+                <div id="work-by-cat"></div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>By Distribution Centre</h2>
+                <div id="work-by-dc"></div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>TPC</h2>
+                <div id="open_request_by_date"></div>
             </div>
         </div>
+        <div class="row section-break"></div>
     </section>
     <!--Tech Scheduler-->
     <section class="container-fluid">
@@ -125,7 +129,7 @@
         <div class="row bg-black">
             <!--Google API-->
             <div class="col-4">
-                <div class="map"></div>
+                <div id="map"></div>
             </div>
             <div class="col-4">
                 <p>Premier Inn Hemel Hempstead</p>
@@ -143,17 +147,173 @@
         </div>
     </section>
     <!--Footer-->
-    <footer class="container-fluid">
+    <footer class="container-fluid fixed-bottom">
         <div class="row">
 
         </div>
     </footer>
 
+    <!--Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--Graphs-->
+    <script type="text/javascript" src="assets/js/d3.min.js"></script>
+    <script type="text/javascript" src="assets/js/crossfilter.min.js"></script>
+    <script type="text/javascript" src="assets/js/dc.min.js"></script>
+    <script type="text/javascript" src="assets/js/queue.min.js"></script>
+    <script type="text/javascript" src="assets/js/graph.js"></script>
+    <!--Google Maps-->
+    <script>
+        function initMap() {
+            // var ndx = crossfilter(tardisWorkload);
+            // var locations = ndx.dimension(dc.pluck('Service_Manager'));
+            var locations = [
+                { lat: 55.0784964, lng: -3.6285867 },
+                { lat: 50.90420823, lng: -1.41005269 },
+                { lat: 50.8027351, lng: -1.0882034 },
+                { lat: 50.92249109, lng: -1.311653517 },
+                { lat: 51.4429764, lng: -1.062075424 },
+                { lat: 52.99555419, lng: -2.208468438 },
+                { lat: 53.02892274, lng: -2.197491447 },
+                { lat: 53.40703974, lng: -2.980547959 },
+                { lat: 51.5267785, lng: -0.0597634 },
+                { lat: 53.37350658, lng: -1.461989813 },
+                { lat: 52.4092394, lng: -1.5121615 },
+                { lat: 50.90358224, lng: -1.407187861 },
+                { lat: 51.4581803, lng: -3.1858801 },
+                { lat: 51.3019172, lng: -0.7455263 },
+                { lat: 52.65271285, lng: 1.186376928 },
+                { lat: 51.7167805, lng: -0.2784905 },
+                { lat: 53.42680623, lng: -2.80103813 },
+                { lat: 52.5851697, lng: -1.9833082 },
+                { lat: 54.87615618, lng: -1.359357988 },
+                { lat: 51.7384463, lng: -0.4712497 },
+                { lat: 53.7545566, lng: -2.3765836 },
+                { lat: 51.44716385, lng: -0.409604605 },
+                { lat: 51.62015765, lng: -3.912729978 },
+                { lat: 51.5240823, lng: -3.24401 },
+                { lat: 52.30629257, lng: -1.123174356 },
+                { lat: 54.57422408, lng: -1.23765498 },
+                { lat: 51.5167048, lng: -0.131162221 },
+                { lat: 53.41195033, lng: -2.158780203 },
+                { lat: 51.2818682, lng: -0.8410077 },
+                { lat: 52.4975828, lng: -1.8969054 },
+                { lat: 51.4627826, lng: -0.167931 },
+                { lat: 50.8224199, lng: -0.1458012 },
+                { lat: 51.5048296, lng: -0.2209571 },
+                { lat: 51.4784149, lng: 0.1808043 },
+                { lat: 51.4007941, lng: 0.1126998 },
+                { lat: 51.426121, lng: 0.1020434 },
+                { lat: 52.4144672, lng: -0.7900542 },
+                { lat: 51.38084275, lng: 0.576551142 },
+                { lat: 51.4163475, lng: -2.5871399 },
+                { lat: 52.54405981, lng: -2.09115761 },
+                { lat: 52.5639345, lng: -2.081403469 },
+                { lat: 53.69726481, lng: -1.319303357 },
+                { lat: 50.90420823, lng: -1.41005269 },
+                { lat: 51.66933488, lng: -3.194612208 },
+                { lat: 53.55000011, lng: -2.77172794 },
+                { lat: 51.008661, lng: -0.9524387 },
+                { lat: 50.8572275, lng: -3.3751196 },
+                { lat: 51.51109278, lng: -0.133942707 },
+                { lat: 55.9447637, lng: -4.154952 },
+                { lat: 51.42986695, lng: -0.033947147 },
+                { lat: 53.4417318, lng: -1.3482635 },
+                { lat: 52.03550597, lng: -0.687939172 },
+                { lat: 54.9258012, lng: -2.9477837 },
+                { lat: 53.77285906, lng: -1.064917118 },
+                { lat: 53.02545407, lng: -2.173755081 },
+                { lat: 52.77156742, lng: -1.206055015 },
+                { lat: 51.3440919, lng: 1.3167004 },
+                { lat: 53.8148551, lng: -3.0536396 },
+                { lat: 53.75978334, lng: -2.701093485 },
+                { lat: 53.74881752, lng: -2.677694175 },
+                { lat: 53.7468214, lng: -2.9379331 },
+                { lat: 53.79114703, lng: -2.68487342 },
+                { lat: 55.955697, lng: -3.1523882 },
+                { lat: 55.9526313, lng: -3.1912938 },
+                { lat: 53.40176077, lng: -1.493459447 },
+                { lat: 53.45670727, lng: -2.962384716 },
+                { lat: 51.6188161, lng: -1.3002209 },
+                { lat: 51.8587774, lng: 1.1020316 },
+                { lat: 51.56926131, lng: 0.460762116 },
+                { lat: 52.4874268, lng: -0.7019712 },
+                { lat: 51.3687207, lng: -0.1180573 },
+                { lat: 51.6285881, lng: -0.7498005 },
+                { lat: 51.8836052, lng: 0.8324236 },
+                { lat: 51.5091526, lng: -0.1978326 },
+                { lat: 52.62587203, lng: 1.289771567 },
+                { lat: 55.8574047, lng: -4.2544388 },
+                { lat: 55.8827321, lng: -3.5194053 },
+                { lat: 53.168866, lng: -2.2175807 },
+                { lat: 51.4440114, lng: 0.2160917 },
+                { lat: 51.49497252, lng: -0.144354161 },
+                { lat: 53.78190008, lng: -1.527260243 },
+                { lat: 53.54314819, lng: -2.291132155 },
+                { lat: 54.374775, lng: -1.7229393 },
+                { lat: 56.13489151, lng: -3.144549409 },
+                { lat: 51.59418735, lng: -3.792571168 },
+                { lat: 52.67812271, lng: -2.047671767 },
+                { lat: 51.3856995, lng: -0.418692 },
+                { lat: 55.0784964, lng: -3.6285867 },
+                { lat: 52.6474244, lng: -1.06747397 },
+                { lat: 51.7468534, lng: -0.4554083 },
+                { lat: 51.4917001, lng: 0.0659474 },
+                { lat: 52.4133206, lng: -1.7792657 },
+                { lat: 53.28360546, lng: -1.290884363 },
+                { lat: 53.2737218, lng: -3.3052663 },
+                { lat: 52.8273303, lng: -1.6207485 },
+                { lat: 53.50127606, lng: -2.257723816 },
+                { lat: 52.4081677, lng: -1.9193107 },
+                { lat: 51.5452186, lng: -0.103615955 },
+                { lat: 52.5087674, lng: -1.9571844 },
+                { lat: 53.091717, lng: -2.4307052 },
+                { lat: 52.7747474, lng: -1.5550779 },
+                { lat: 52.97868909, lng: -0.023930306 },
+                { lat: 51.50315216, lng: -0.111457847 },
+                { lat: 51.4008323, lng: 0.515043682 },
+                { lat: 51.8000505, lng: -0.044152 },
+                { lat: 53.5454533, lng: -0.0113142 },
+                { lat: 51.3737953, lng: 0.0982949 },
+                { lat: 52.5161335, lng: -2.0722226 },
+                { lat: 51.56587102, lng: -0.135957235 },
+                { lat: 53.03541103, lng: -2.237770291 },
+                { lat: 51.3617699, lng: -2.9091498 },
+                { lat: 52.75150687, lng: -1.445842029 },
+                { lat: 52.4867289, lng: -1.8078068 },
+                { lat: 53.4436463, lng: -2.309315 },
+                { lat: 50.98929706, lng: 0.089755016 },
+                { lat: 53.1339641, lng: -1.3325706 },
+                { lat: 53.2483009, lng: -1.340145153 },
+                { lat: 51.21243598, lng: -1.518221635 },
+                { lat: 53.1393811, lng: -2.3375137 },
+                { lat: 50.9186455, lng: -1.4848272 },
+                { lat: 53.1339641, lng: -1.3325706 },
+                { lat: 52.7803084, lng: -1.2295132 },
+                { lat: 51.4687991, lng: -0.3630969 },
+                { lat: 51.5297075, lng: -0.0150025 },
+            ]
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: {
+                    lat: 52.55016186,
+                    lng: -1.416415095
+                }
+            });
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+            });
+            var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+        }
+    </script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ&callback=initMap"></script>
+
 </body>
 
 </html>

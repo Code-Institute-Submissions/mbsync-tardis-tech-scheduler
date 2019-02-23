@@ -38,7 +38,7 @@ h2 {
     font-size: 20px;
 }
 
-/*-----------------------------------Tech Scheduler - Header*/
+/*-----------------------------------Header*/
 
 .header-main {
     width: 100%;
@@ -58,6 +58,27 @@ h2 {
 
 .header-main h1 span {
     font-weight: 500;
+}
+
+/*-----------------------------------Analytics Dashboard*/
+
+.section-break {
+    height:300px;
+}
+
+.section-dashboard .row {
+    text-align: center;
+}
+
+.dc-chart {
+    fill: white;
+    font: 12px sans-serif;
+    word-wrap: break-word;
+}
+
+.dc-chart .axis text {
+    font: 12px sans-serif;
+    overflow-x: auto; 
 }
 
 /*-----------------------------------Tech Scheduler - Navs*/
@@ -94,29 +115,20 @@ h2 {
     display: block;
 }
 
-.scheduler-nav-content a:hover {
-}
+.scheduler-nav-content a:hover {}
 
 .scheduler-nav:hover .scheduler-nav-content {
     display: block;
 }
 
-.scheduler-nav:hover .scheduler-nav-btn {
-}
+.scheduler-nav:hover .scheduler-nav-btn {}
 
-/*-----------------------------------Tech Scheduler - Analytics Dashboard*/
-
-.section-dashboard {
-    height: 100vh;
-}
-
-.section-dashboard .row {
-    text-align: center;
-    height: 300px;
-}
-
-/*-----------------------------------Tech Scheduler - Scheduler*/
+/*-----------------------------------Tech Scheduler*/
 
 .header-scheduler h3 {
     margin: auto 0;
+}
+
+#map {
+    min-height: 300px;
 }
