@@ -77,9 +77,10 @@ h2 {
 }
 
 .dc-chart .axis text {
-    font: 12px sans-serif;
+    font: 10px sans-serif;
     overflow-x: auto;
 }
+
 
 /*-----------------------------------Tech Scheduler - Navs*/
 

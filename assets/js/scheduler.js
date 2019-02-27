@@ -179,7 +179,7 @@ function makeTablePM(data, day) {
 ///////////////////////////////////  MAP DATA EXTRACTION & TARGETTING  ///////////////////////////////////
 
 //Extract Goodgle Map Locations
-function getMapLocations(data, tech, date) {
+function getMapLocations(mapData, tech, date) {
     let j = 0;
     for (let i = 0; i < data.length; i++) {
         let dateFormatted = changeDateFormat(data[i][6]);

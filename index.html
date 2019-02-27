@@ -17,7 +17,7 @@
 
 <body>
     <!--MBSync Header-->
-    
+
     <header class="container-fluid">
         <div class="row">
             <div class="bg-header-color header-main">
@@ -26,18 +26,26 @@
         </div>
     </header>
     <!--Analytics Dashboard-->
-    
+
     <section class="container-fluid section-dashboard">
         <div class="row bg-black-opacity">
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-6">
                 <h2>By Service Manager</h2>
                 <div id="work-by-sm"></div>
             </div>
             <div class="col-12 col-md-2">
-                <i class="fa fa-warehouse" aria-hidden="true"></i> <span class="number-box" id="count-of-hh"></span>
-                <i class="fa fa-warehouse" aria-hidden="true"></i> <span class="number-box" id="count-of-hw"></span>
+                <h2>Open Requests by Distribution Centre</h2>
+                <ul>
+                    <li><i class="fa fa-warehouse" aria-hidden="true"></i>HH: <span class="number-box" id="count-of-hh"></span></li>
+                    <li><i class="fa fa-warehouse" aria-hidden="true"></i>HW: <span class="number-box" id="count-of-hw"></span></li>
+                    <li><i class="fa fa-warehouse" aria-hidden="true"></i>BA: <span class="number-box" id="count-of-ba"></span></li>
+                    <li><i class="fa fa-warehouse" aria-hidden="true"></i>CV: <span class="number-box" id="count-of-cv"></span></li>
+                    <li><i class="fa fa-warehouse" aria-hidden="true"></i>DB: <span class="number-box" id="count-of-db"></span></li>
+                </ul>
+                <h2>Filter by Request Status</h2>
+                <div id="filter-by-sm"></div>
             </div>
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-4">
                 <h2>By Job Category</h2>
                 <div id="work-by-cat"></div>
             </div>
@@ -52,7 +60,7 @@
         </div>
         <div class="row section-break"></div>
     </section>
-    
+
     <!--Tech Scheduler-->
     <section class="container-fluid">
         <div class="row bg-electric-blue header-scheduler">
@@ -89,7 +97,7 @@
             </div>
             <hr class="my-5">
         </div>
-        
+
         <!--Tech Scheduler - Analytics & Schedule of works-->
         <div class="row bg-black">
             <div class="col-4">
@@ -129,29 +137,29 @@
             </div>
         </div>
     </section>
-    
+
     <!--Map, Hotels & Restaurants-->
-    <section class="container-fluid">
-        <div class="row bg-black">
-            <div class="col-4">
-                <div id="map"></div>
-            </div>
-            <div class="col-4">
-                <p>Premier Inn Hemel Hempstead</p>
-                <p>Premier Inn Hemel Hempstead</p>
-                <p>Premier Inn Hemel Hempstead</p>
-            </div>
-            <div class="col-4">
-                <h4>Nearby Restaurants</h4>
-                <p>000 - Restaurant Name</p>
-                <p>000 - Restaurant Name</p>
-                <p>000 - Restaurant Name</p>
-                <p>000 - Restaurant Name</p>
-                <p>000 - Restaurant Name</p>
-            </div>
-        </div>
-    </section>
-    
+    <!--<section class="container-fluid">-->
+    <!--    <div class="row bg-black">-->
+    <!--        <div class="col-4">-->
+    <!--            <div id="map"></div>-->
+    <!--        </div>-->
+    <!--        <div class="col-4">-->
+    <!--            <p>Premier Inn Hemel Hempstead</p>-->
+    <!--            <p>Premier Inn Hemel Hempstead</p>-->
+    <!--            <p>Premier Inn Hemel Hempstead</p>-->
+    <!--        </div>-->
+    <!--        <div class="col-4">-->
+    <!--            <h4>Nearby Restaurants</h4>-->
+    <!--            <p>000 - Restaurant Name</p>-->
+    <!--            <p>000 - Restaurant Name</p>-->
+    <!--            <p>000 - Restaurant Name</p>-->
+    <!--            <p>000 - Restaurant Name</p>-->
+    <!--            <p>000 - Restaurant Name</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
+
     <!--Footer-->
     <footer class="container-fluid fixed-bottom">
         <div class="row">
