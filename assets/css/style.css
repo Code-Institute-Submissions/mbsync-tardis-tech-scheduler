@@ -63,7 +63,7 @@ h2 {
 /*-----------------------------------Analytics Dashboard*/
 
 .section-break {
-    height:300px;
+    height: 300px;
 }
 
 .section-dashboard .row {
@@ -78,7 +78,7 @@ h2 {
 
 .dc-chart .axis text {
     font: 12px sans-serif;
-    overflow-x: auto; 
+    overflow-x: auto;
 }
 
 /*-----------------------------------Tech Scheduler - Navs*/
@@ -108,14 +108,16 @@ h2 {
     overflow: auto;
 }
 
-.scheduler-nav-content a {
+.scheduler-nav-content li {
     color: inherit;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.scheduler-nav-content a:hover {}
+.scheduler-nav-content li:hover {
+    cursor: pointer;
+}
 
 .scheduler-nav:hover .scheduler-nav-content {
     display: block;
