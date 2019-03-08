@@ -47,6 +47,7 @@ function showAllocationBySM(ndx) {
         .dimension(dim)
         .group(group)
         .transitionDuration(1000)
+        .elasticX(true);
 }
 
 
@@ -122,6 +123,7 @@ function showAllocationByDC(ndx) {
         .dimension(dim)
         .group(group)
         .transitionDuration(1000)
+        .elasticY(true)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .xAxisLabel("Distribution Centre")
@@ -145,6 +147,7 @@ function showRequestsOpenGraph(ndx) {
         .dimension(date_dim)
         .group(group)
         .transitionDuration(1000)
+        .elasticY(true)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .xAxisLabel("Month")
         .yAxis().ticks(4);

@@ -34,9 +34,6 @@ body {
     font-size: 16px;
 }
 
-h2 {
-    font-size: 20px;
-}
 
 /*-----------------------------------Header*/
 
@@ -62,12 +59,46 @@ h2 {
 
 /*-----------------------------------Analytics Dashboard*/
 
-.section-break {
-    height: 300px;
+.section-dashboard {
+    text-align: center;
 }
 
-.section-dashboard .row {
-    text-align: center;
+.section-dashboard h2 {
+    margin: auto 0;
+    font-size: 28px;
+}
+
+.section-dashboard h3 {
+    margin: auto 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.section-graphs {}
+
+.section-graphs ul {
+    margin: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 20px;
+    padding-left: 0;
+    font-size: 12px;
+}
+
+.section-graphs ul li {
+    list-style: none;
+}
+
+.section-graphs span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#filter-by-sm {
+    display: contents;
+    font-family: 'proxima_novaregular', Arial, sans-serif;
+    font-size: 12px;
 }
 
 .dc-chart {
@@ -81,8 +112,16 @@ h2 {
     overflow-x: auto;
 }
 
+.section-break {
+    height: 300px;
+}
+
 
 /*-----------------------------------Tech Scheduler - Navs*/
+
+.header-scheduler h3 {
+    margin: auto 0;
+}
 
 .scheduler-nav-btn {
     padding: 10px;
@@ -98,40 +137,99 @@ h2 {
 
 .scheduler-nav i {
     font-size: 20px;
+    padding-left: 10px;
 }
 
 .scheduler-nav-content {
     display: none;
     position: absolute;
-    min-width: 160px;
+    min-width: 200px;
     z-index: 1;
     height: 200px;
+    padding-left: 10px;
     overflow: auto;
 }
 
 .scheduler-nav-content li {
     color: inherit;
-    padding: 12px 16px;
+    padding-bottom: 10px;
     text-decoration: none;
     display: block;
 }
 
-.scheduler-nav-content li:hover {
+.scheduler-nav-content li span:hover {
     cursor: pointer;
+    animation: textPulse .75s infinite;
 }
 
 .scheduler-nav:hover .scheduler-nav-content {
     display: block;
 }
 
-.scheduler-nav:hover .scheduler-nav-btn {}
+
+@keyframes textPulse {
+    0% {
+        color: #fff;
+    }
+    50% {
+        color: #09f;
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+#ui-id-1 {
+    background-color: #000;
+    max-height: 350px;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+}
+
+#ui-id-1 li {
+    padding-left: 10px;
+}
+
+#ui-id-1 li:hover {
+    cursor: pointer;
+    animation: textPulse .75s infinite;
+}
+
+.scheduler-search-btn {
+    color: #fff;
+    text-decoration: none;
+    margin-top: 5px;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+
+    background: rgba(73, 77, 80, 0.2);
+    border: 1px solid #000;
+    padding: 10px 25px;
+}
+
+.scheduler-search-btn:active,
+.scheduler-search-btn:focus {
+    box-shadow: 0 0 0 transparent inset;
+}
+
 
 /*-----------------------------------Tech Scheduler*/
 
-.header-scheduler h3 {
-    margin: auto 0;
+.scheduler-container {
+    padding: 10px;
 }
 
 #map {
     min-height: 300px;
+}
+
+#scheduler-table {
+    font-size: 10px;
 }

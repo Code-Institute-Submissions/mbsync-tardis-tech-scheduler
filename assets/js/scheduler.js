@@ -42,8 +42,8 @@ function processData(allData) {
     getScheduleTable(techWorkData, $("#scheduler-name").html(), $("#scheduler-date").html());
     initMap(techWorkData);
 
-    //Tech selector click - updates map, weekly table of work and nearby info
-    $("#techSelector li").click(function() {
+    //Tech selector click - updates map, weekly table of work and nearby info based on tech
+    $("#techSelector li span").click(function() {
         var techSelected = $(this).html();
         var dateSelected = $("#scheduler-date").html();
 
@@ -53,8 +53,8 @@ function processData(allData) {
         initMap(techWorkData);
     });
 
-    //Date selector click - updates map, weekly table of work and nearby info
-    $("#dateSelector li").click(function() {
+    //Date selector click - updates map, weekly table of work and nearby info based on WC date
+    $("#dateSelector li span").click(function() {
         var techSelected = $("#scheduler-name").html();
         var dateSelected = $(this).html()
 
@@ -66,23 +66,47 @@ function processData(allData) {
         }
     });
 
-}
+    //Restaurant Search btn click - updates map, weekly table of work and nearby info base on restaurant
+    $("#restSelector").click(function() {
+        $(".no-data").html("");
+        if (!$("#restaurant-name").val()) {
+            $(".no-data").html("Please enter a restaurant number");
+        }
+        else {
+            restName = $("#restaurant-name").val();
+        };
+        for (let i = 0; i < techWorkData.length; i++) {
+            if (restName === techWorkData[i][1]) {
+                var techSelected = techWorkData[i][5];
+                var dateFormatted = changeDateFormat(techWorkData[i][6]);
+                var dateSelected = adjustDate(dateFormatted);
+
+                $('#weekly-scheduler').children().remove();
+                $("#scheduler-date").html(dateSelected);
+                $("#scheduler-name").html(techSelected);
+                getScheduleTable(techWorkData, techSelected, dateSelected);
+                initMap(techWorkData);
+            }
+        };
+    });
+};
 
 ///////////////////////////////////  GOOGLE MAP API  ///////////////////////////////////
 
 //Google Map API
 function initMap(data) {
-    var locationsTest = getMapLocations(data, $("#scheduler-name").html(), $("#scheduler-date").html());
-    var locations = locationsTest.locationArray
+    var locations = [];
+    locations = getMapLocations(data, $("#scheduler-name").html(), $("#scheduler-date").html());
+    var mapLocations = locations.locationArray
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: {
-            lat: locationsTest.targetLat,
-            lng: locationsTest.targetLng
+            lat: locations.targetLat,
+            lng: locations.targetLng
         }
     });
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; //input restaurants
-    var markers = locations.map(function(location, i) {
+    var markers = mapLocations.map(function(location, i) {
         return new google.maps.Marker({
             position: location,
             label: labels[i % labels.length]
@@ -96,6 +120,17 @@ function initMap(data) {
 
 //Process the data and selected tech and date in the page and push filtered results
 function getScheduleTable(data, tech, date) {
+    tableOfWork = "";
+    tableMondayAM = "<td></td>";
+    tableMondayPM = "<td></td>";
+    tableTuesdayAM = "<td></td>";
+    tableTuesdayPM = "<td></td>";
+    tableWednesdayAM = "<td></td>";
+    tableWednesdayPM = "<td></td>";
+    tableThursdayAM = "<td></td>";
+    tableThursdayPM = "<td></td>";
+    tableFridayAM = "<td></td>";
+    tableFridayPM = "<td></td>";
     for (let i = 0; i < data.length; i++) {
         let dateFormatted = changeDateFormat(data[i][6]);
         dateFrom = changeDateFormat(date);
@@ -109,9 +144,12 @@ function getScheduleTable(data, tech, date) {
                 makeTablePM(data[i], dateFormatted.getDay());
             }
         }
-    }
+    };
     tableOfWork = '<tr><th scope="row">AM</th>' + tableMondayAM + tableTuesdayAM + tableWednesdayAM + tableThursdayAM + tableFridayAM + '</tr><tr><th scope="row">PM</th>' + tableMondayPM + tableTuesdayPM + tableWednesdayPM + tableThursdayPM + tableFridayPM + '</tr>'
+    
     $('#weekly-scheduler').append(tableOfWork);
+    $('#active-tech').html("").html("Technician: " + tech);
+    $('#active-date').html("").html("Week Commencing: " + date);
 }
 
 //Convert date with / into system date
@@ -132,6 +170,28 @@ function changeDateFormat(returnDate) {
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
+    return result;
+}
+
+//Adjust date to WC date for restaurant search
+function adjustDate(date) {
+    var result = new Date(date);
+    var dayAdjust = result.getDay() - 1;
+
+    result.setDate(result.getDate() - dayAdjust);
+
+    var dd = result.getDate();
+    var mm = result.getMonth() + 1;
+    var yyyy = result.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+
+    result = dd + '/' + mm + '/' + yyyy;
     return result;
 }
 
@@ -179,12 +239,16 @@ function makeTablePM(data, day) {
 ///////////////////////////////////  MAP DATA EXTRACTION & TARGETTING  ///////////////////////////////////
 
 //Extract Goodgle Map Locations
-function getMapLocations(mapData, tech, date) {
+function getMapLocations(data, tech, date) {
     let j = 0;
+    locationArray = [];
+    targetLat = "";
+    targetLng="";
+
     for (let i = 0; i < data.length; i++) {
         let dateFormatted = changeDateFormat(data[i][6]);
-        dateFrom = changeDateFormat(date);
-        dateTo = addDays(dateFrom, 7);
+        var dateFrom = changeDateFormat(date);
+        var dateTo = addDays(dateFrom, 7);
         if (data[i][5] === tech && dateFormatted >= dateFrom && dateFormatted < dateTo) {
             if (dateFormatted.getDay() == 1 && data[i][7] === "AM") {
                 targetLat = parseFloat(data[i][3]);
@@ -193,6 +257,10 @@ function getMapLocations(mapData, tech, date) {
             locationArray[j] = { lat: parseFloat(data[i][3]), lng: parseFloat(data[i][4]) };
             j++;
         }
+    }
+    if (targetLat === "") {
+        targetLat = 51.509865;
+        targetLng = -0.118092;
     }
     return { locationArray, targetLat, targetLng };
 }
