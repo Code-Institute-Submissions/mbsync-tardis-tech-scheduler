@@ -25,32 +25,6 @@ function makeGraphs(error, tardisWorkload) {
 }
 
 
-//Filter
-function showFilterBySM(ndx) {
-    var dim = ndx.dimension(dc.pluck('Request_Status'));
-    var group = dim.group();
-
-    dc.selectMenu("#filter-by-sm")
-        .dimension(dim)
-        .group(group);
-}
-
-
-//Row Chart - By Service Manager
-function showAllocationBySM(ndx) {
-    var dim = ndx.dimension(dc.pluck('Service_Manager'));
-    var group = dim.group();
-
-    dc.rowChart("#work-by-sm")
-        .width(600)
-        .height(250)
-        .dimension(dim)
-        .group(group)
-        .transitionDuration(1000)
-        .elasticX(true);
-}
-
-
 //Number Box - Count open jobs By Distribution Centre
 function showCountOfDistCentre(ndx, distCentre, elementId) {
     var countDistCentre = ndx.groupAll().reduce(
@@ -92,19 +66,26 @@ function showCountOfDistCentre(ndx, distCentre, elementId) {
 }
 
 
+//Filter
+function showFilterBySM(ndx) {
+    var dim = ndx.dimension(dc.pluck('Request_Status'));
+    var group = dim.group();
+
+    dc.selectMenu("#filter-by-sm")
+        .dimension(dim)
+        .group(group);
+}
+
+
 //Pie Chart - Purpose (Category)
 function showAllocationByCat(ndx) {
     var dim = ndx.dimension(dc.pluck('Purpose'));
-    var group = dim.group().reduceCount(function(d) {
-        console.log(d.Request_Status);
-        if (d.Request_Status === "Open") {
-            return 1;
-        }
-    });
+    var group = dim.group();
+
 
     dc.pieChart("#work-by-cat")
-        .height(0)
-        .radius(300)
+        .height(250)
+        .width(250)
         .transitionDuration(1500)
         .dimension(dim)
         .group(group);
@@ -115,11 +96,18 @@ function showAllocationByCat(ndx) {
 function showAllocationByDC(ndx) {
     var dim = ndx.dimension(dc.pluck('Distribution_Centre'));
     var group = dim.group();
+    var distCentreColors = d3.scale.ordinal()
+        .domain(["BA", "CV", "DB", "HH", "HW"])
+        .range(["#aa3d3d", "#a861a5", "#45774d", "#7ee3ea", "#e6e881"]);
+
 
     dc.barChart("#work-by-dc")
-        .width(600)
-        .height(250)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
+        .width(400)
+        .height(300)
+        .colorAccessor(function(d) {
+            return d.key[1];
+        })
+        .colors(distCentreColors)
         .dimension(dim)
         .group(group)
         .transitionDuration(1000)
@@ -140,10 +128,9 @@ function showRequestsOpenGraph(ndx) {
     minDate.setDate(minDate.getDate() - 90);
     // var minDate = date_dim.bottom(1)[0].Date_Opened;
 
-    dc.lineChart("#open_request_by_date")
+    dc.lineChart("#open-request-by-date")
         .width(600)
         .height(300)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .dimension(date_dim)
         .group(group)
         .transitionDuration(1000)
@@ -151,4 +138,19 @@ function showRequestsOpenGraph(ndx) {
         .x(d3.time.scale().domain([minDate, maxDate]))
         .xAxisLabel("Month")
         .yAxis().ticks(4);
+}
+
+
+//Row Chart - By Service Manager
+function showAllocationBySM(ndx) {
+    var dim = ndx.dimension(dc.pluck('Service_Manager'));
+    var group = dim.group();
+
+    dc.rowChart("#work-by-sm")
+        .width(600)
+        .height(300)
+        .dimension(dim)
+        .group(group)
+        .transitionDuration(1000)
+        .elasticX(true);
 }

@@ -25,42 +25,50 @@
         </div>
     </header>
 
-    <!--Analytics Dashboard-->
+    <!--Analytics Dashboard Header-->
     <section class="container-fluid section-dashboard">
         <div class="row bg-electric-blue">
             <h2 class="col-12">TARDIS Dashboard</h2>
         </div>
-        <div class="bg-black-opacity section-graphs">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <h3>Open Requests by Distribution Centre</h3>
-                    <ul>
-                        <li><i class="fa fa-warehouse" aria-hidden="true"></i> Hemel Hempstead: <span class="number-box" id="count-of-hh"></span></li>
-                        <li><i class="fa fa-warehouse" aria-hidden="true"></i> Heywood: <span class="number-box" id="count-of-hw"></span></li>
-                        <li><i class="fa fa-warehouse" aria-hidden="true"></i> Basingstoke: <span class="number-box" id="count-of-ba"></span></li>
-                        <li><i class="fa fa-warehouse" aria-hidden="true"></i> Coventry: <span class="number-box" id="count-of-cv"></span></li>
-                        <li><i class="fa fa-warehouse" aria-hidden="true"></i> Dublin: <span class="number-box" id="count-of-db"></span></li>
-                    </ul>
-                    <span>Filter by Request Status: </span>
-                    <div id="filter-by-sm"></div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <h3>By Job Category</h3>
-                    <div id="work-by-cat"></div>
+    </section>
+    
+    <!--Analytics Dashboard Section-->
+    <section class="container-fluid section-dashboard">
+        <div class="row bg-black-opacity">
+            <div class="col-12 col-xl-4">
+                <h3>Open SalesForce Requests</h3>
+                <ul class="open-request-by-dc">
+                    <li><i class="fa fa-warehouse ba-dc" aria-hidden="true"></i> Basingstoke: <span class="number-box" id="count-of-ba"></span></li>
+                    <li><i class="fa fa-warehouse cv-dc" aria-hidden="true"></i> Coventry: <span class="number-box" id="count-of-cv"></span></li>
+                    <li><i class="fa fa-warehouse db-dc" aria-hidden="true"></i> Dublin: <span class="number-box" id="count-of-db"></span></li>
+                    <li><i class="fa fa-warehouse hh-dc" aria-hidden="true"></i> Hemel Hempstead: <span class="number-box" id="count-of-hh"></span></li>
+                    <li><i class="fa fa-warehouse hw-dc" aria-hidden="true"></i> Heywood: <span class="number-box" id="count-of-hw"></span></li>
+                </ul>
+                <span>Filter by Request Status: </span>
+                <div id="filter-by-sm"></div>
             </div>
-                <div class="col-12 col-lg-4">
-                    <h3>By Distribution Centre</h3>
+            <div class="col-12 col-md-6 col-xl-4">
+                <h3>Requests by Job Category</h3>
+                <div id="work-by-cat"></div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <h3>Requests by Distribution Centre</h3>
+                <div class="graph-container">
                     <div id="work-by-dc"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <h3>By Service Manager</h3>
-                    <div id="work-by-sm"></div>
+        </div>
+        <div class="row bg-black-opacity section-graphs">
+            <div class="col-12 col-lg-6">
+                <h3>SalesForce Requests In</h3>
+                <div class="graph-container">
+                    <div id="open-request-by-date"></div>
+                </div>
             </div>
-                <div class="col-12 col-lg-6">
-                    <h3>Requests In</h3>
-                    <div id="open_request_by_date"></div>
+            <div class="col-12 col-lg-6">
+                <h3>Reques by Service Manager</h3>
+                <div class="graph-container">
+                    <div id="work-by-sm"></div>
                 </div>
             </div>
         </div>

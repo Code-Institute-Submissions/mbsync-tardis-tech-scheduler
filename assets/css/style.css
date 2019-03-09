@@ -75,51 +75,86 @@ body {
     font-size: 20px;
 }
 
-.section-graphs {}
+/*------Open SalesForce Requests*/
 
-.section-graphs ul {
+.open-request-by-dc {
     margin: 0;
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 20px;
     padding-left: 0;
-    font-size: 12px;
+    font-size: 15px;
 }
 
-.section-graphs ul li {
+.open-request-by-dc li {
     list-style: none;
 }
 
-.section-graphs span {
-    font-size: 12px;
+.open-request-by-dc span {
+    font-size: 15px;
     font-weight: bold;
+}
+
+.ba-dc {
+    color: #aa3d3d;
+}
+
+.cv-dc {
+    color: #a861a5;
+}
+
+.db-dc {
+    color: #45774d;
+}
+
+.hh-dc {
+    color: #7ee3ea;
+}
+
+.hw-dc {
+    color: #e6e881;
 }
 
 #filter-by-sm {
     display: contents;
     font-family: 'proxima_novaregular', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 15px;
 }
 
-.dc-chart {
+/*------Graph Styling*/
+
+#work-by-dc,
+#work-by-cat,
+#open-request-by-date,
+#work-by-sm {
+    width: 100%;
+    left: 50%;
+}
+
+#work-by-cat .pie-label-group text,
+#work-by-dc,
+#open-request-by-date,
+#work-by-sm {
     fill: white;
-    font: 12px sans-serif;
+    font-family: 'proxima_novaregular', Arial, sans-serif;
+    font-size: 12px;
     word-wrap: break-word;
 }
 
-.dc-chart .axis text {
-    font: 10px sans-serif;
-    overflow-x: auto;
-}
+/*.graph-container {*/
+/*    overflow-x: scroll;*/
+/*}*/
+
 
 .section-break {
-    height: 300px;
+    height: 200px;
 }
 
 
 /*-----------------------------------Tech Scheduler - Navs*/
 
 .header-scheduler h3 {
+    text-align: center;
     margin: auto 0;
 }
 
@@ -233,3 +268,6 @@ body {
 #scheduler-table {
     font-size: 10px;
 }
+
+/*-----------------------Breakpoint Stlyes*/
+
