@@ -114,7 +114,6 @@ function showAllocationByDC(ndx) {
         .elasticY(true)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .xAxisLabel("Distribution Centre")
         .yAxis().ticks(20);
 }
 
@@ -136,7 +135,6 @@ function showRequestsOpenGraph(ndx) {
         .transitionDuration(1000)
         .elasticY(true)
         .x(d3.time.scale().domain([minDate, maxDate]))
-        .xAxisLabel("Month")
         .yAxis().ticks(4);
 }
 

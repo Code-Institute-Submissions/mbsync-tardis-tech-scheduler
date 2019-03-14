@@ -31,10 +31,10 @@
             <h2 class="col-12">TARDIS Dashboard</h2>
         </div>
     </section>
-    
+
     <!--Analytics Dashboard Section-->
     <section class="container-fluid section-dashboard">
-        <div class="row bg-black-opacity">
+        <div class="row bg-black-opacity section-graphs">
             <div class="col-12 col-xl-4">
                 <h3>Open SalesForce Requests</h3>
                 <ul class="open-request-by-dc">
@@ -56,6 +56,7 @@
                 <div class="graph-container">
                     <div id="work-by-dc"></div>
                 </div>
+                <h6 class="graph-axis">Distribution Centre</h6>
             </div>
         </div>
         <div class="row bg-black-opacity section-graphs">
@@ -64,12 +65,14 @@
                 <div class="graph-container">
                     <div id="open-request-by-date"></div>
                 </div>
+                <h6 class="graph-axis">Months</h6>
             </div>
             <div class="col-12 col-lg-6">
                 <h3>Reques by Service Manager</h3>
                 <div class="graph-container">
                     <div id="work-by-sm"></div>
                 </div>
+                <h6 class="graph-axis">Requests</h6>
             </div>
         </div>
         <div class="row section-break"></div>
@@ -85,7 +88,14 @@
     <!--Tech Scheduler Nav-->
     <section class="container-fluid">
         <div class="row bg-black">
-            <div class="col-3">
+            <div class="col-12 col-lg-6">
+                <input id="restaurant-name" type="text" placeholder="Search..." />
+                <p class="no-data"></p>
+            </div>
+            <div class="col-12 col-sm-4 col-lg-2 scheduler-search-container">
+                <button id="restSelector" class="scheduler-search-btn">Update Scheduler</button>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2 scheduler-nav-container">
                 <div class="scheduler-nav">
                     <button class="scheduler-nav-btn bg-black text-white"><span id="scheduler-name">JASON LOWDE</span><i class="fas fa-chevron-down"></i></button>
                     <ul id="techSelector" class="scheduler-nav-content bg-black">
@@ -96,7 +106,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-6 col-sm-4 col-lg-2 scheduler-nav-container">
                 <div class="scheduler-nav">
                     <button class="scheduler-nav-btn bg-black text-white"><span id="scheduler-date">25/02/2019</span><i class="fas fa-chevron-down"></i></button>
                     <ul id="dateSelector" class="scheduler-nav-content bg-black">
@@ -108,11 +118,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-6">
-                <input id="restaurant-name" type="text" class="form-control" placeholder="Search..." />
-                <button id="restSelector" class="scheduler-search-btn">Update Scheduler</button>
-                <span class="no-data"></span>
-            </div>
             <hr class="my-5">
         </div>
     </section>
@@ -120,22 +125,27 @@
     <!--Tech Scheduler Map & Schedule of works-->
     <section class="container-fluid">
         <div class="row scheduler-container bg-black">
-            <div class="col-12 col-lg-4">
-                <div id="map"></div>
-            </div>
-            <div class="col-12 col-lg-8">
+            <div class="col-12 d-lg-none">
                 <h3>Schedule of Weekly Tech Work</h3>
                 <p id="active-tech">Technician: JASON LOWDE</p>
                 <p id="active-date">Week Commencing: 25/02/2019</p>
-                <table id="scheduler-table" class="table table-dark">
+            </div>
+            <div class="col-12 col-lg-4">
+                <div id="map"></div>
+            </div>
+            <div class="col-12 col-lg-8 scheduler-table-container">
+                <h3 class="d-none d-lg-block">Schedule of Weekly Tech Work</h3>
+                <p class="d-none d-lg-block" id="active-tech">Technician: JASON LOWDE</p>
+                <p class="d-none d-lg-block" id="active-date">Week Commencing: 25/02/2019</p>
+                <table id="scheduler-table" class="table table-bordered table-dark">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Monday</th>
-                            <th scope="col">Tuesday</th>
-                            <th scope="col">Wednesday</th>
-                            <th scope="col">Thursday</th>
-                            <th scope="col">Friday</th>
+                            <th scope="col" class="scheduler-col">Monday</th>
+                            <th scope="col" class="scheduler-col">Tuesday</th>
+                            <th scope="col" class="scheduler-col">Wednesday</th>
+                            <th scope="col" class="scheduler-col">Thursday</th>
+                            <th scope="col" class="scheduler-col">Friday</th>
                         </tr>
                     </thead>
                     <tbody id="weekly-scheduler"></tbody>

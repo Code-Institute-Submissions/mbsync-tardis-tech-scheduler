@@ -26,6 +26,7 @@ $(document).ready(function() {
         dataType: "text",
         success: function(data) { processData(data); }
     });
+
 });
 
 //Process the CSV file and push results

@@ -20,7 +20,7 @@
     color: #fff;
 }
 
-/*-----------------------------------Elements*/
+/*-----------------------------------Main*/
 
 body {
     background: url("../images/aggregate-bg.jpg");
@@ -135,19 +135,31 @@ body {
 #work-by-dc,
 #open-request-by-date,
 #work-by-sm {
-    fill: white;
+    fill: #fff;
     font-family: 'proxima_novaregular', Arial, sans-serif;
     font-size: 12px;
     word-wrap: break-word;
 }
 
-/*.graph-container {*/
-/*    overflow-x: scroll;*/
-/*}*/
+.dc-chart .axis path,
+.axis line {
+    fill: none;
+    stroke: #fff;
+}
 
+.section-graphs h6 {
+    padding: 0;
+    font-family: 'proxima_novaregular', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.graph-container {
+    overflow-x: scroll;
+}
 
 .section-break {
     height: 200px;
+    z-index: 1;
 }
 
 
@@ -158,9 +170,70 @@ body {
     margin: auto 0;
 }
 
-.scheduler-nav-btn {
+/*---------Search autocomplete*/
+
+#restaurant-name {
+    margin-top: 20px;
+    margin-left: 10px;
     padding: 10px;
-    font-size: 16px;
+    width: 97%;
+    display: flex;
+}
+
+#ui-id-1 li {
+    margin: 20px;
+}
+
+#ui-id-1 li:hover {
+    cursor: pointer;
+    animation: textPulse .75s infinite;
+}
+
+.scheduler-search-container {
+    text-align: center;
+}
+
+.scheduler-search-btn {
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    background: rgba(73, 77, 80, 0.5);
+    border: 1px solid #494d50;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
+}
+
+.scheduler-search-btn:active,
+.scheduler-search-btn:focus {
+    box-shadow: 0 0 0 transparent inset;
+}
+
+#ui-id-1 {
+    background-color: #000;
+    max-height: 350px;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+}
+
+/*-------Tech & Date Navs*/
+
+.scheduler-nav-container {
+    font-family: 'proxima_novaregular', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+.scheduler-nav-btn {
+    margin-top: 10px;
+    padding: 10px;
     border: none;
     cursor: pointer;
 }
@@ -170,26 +243,30 @@ body {
     display: inline-block;
 }
 
+.scheduler-nav:hover .scheduler-nav-content {
+    max-height: 200px;
+    opacity: 1;
+}
+
 .scheduler-nav i {
-    font-size: 20px;
     padding-left: 10px;
 }
 
 .scheduler-nav-content {
-    display: none;
-    position: absolute;
-    min-width: 200px;
-    z-index: 1;
-    height: 200px;
-    padding-left: 10px;
+    padding: 0;
+    width: 100%;
     overflow: auto;
+    max-height: 0;
+    opacity: 0;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out;
 }
 
 .scheduler-nav-content li {
-    color: inherit;
     padding-bottom: 10px;
+    font-size: 15px;
     text-decoration: none;
-    display: block;
+    list-style: none;
 }
 
 .scheduler-nav-content li span:hover {
@@ -197,10 +274,17 @@ body {
     animation: textPulse .75s infinite;
 }
 
-.scheduler-nav:hover .scheduler-nav-content {
-    display: block;
+@-webkit-keyframes textPulse {
+    0% {
+        color: #fff;
+    }
+    50% {
+        color: #09f;
+    }
+    100% {
+        color: #fff;
+    }
 }
-
 
 @keyframes textPulse {
     0% {
@@ -214,46 +298,6 @@ body {
     }
 }
 
-#ui-id-1 {
-    background-color: #000;
-    max-height: 350px;
-    list-style: none;
-    padding: 0;
-    overflow: auto;
-}
-
-#ui-id-1 li {
-    padding-left: 10px;
-}
-
-#ui-id-1 li:hover {
-    cursor: pointer;
-    animation: textPulse .75s infinite;
-}
-
-.scheduler-search-btn {
-    color: #fff;
-    text-decoration: none;
-    margin-top: 5px;
-
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-
-    -webkit-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
-    box-shadow: 0 1px 0px rgba(73, 77, 80, 0.1) inset, 0 0px 1px rgba(0, 0, 0, 0.7);
-
-    background: rgba(73, 77, 80, 0.2);
-    border: 1px solid #000;
-    padding: 10px 25px;
-}
-
-.scheduler-search-btn:active,
-.scheduler-search-btn:focus {
-    box-shadow: 0 0 0 transparent inset;
-}
-
 
 /*-----------------------------------Tech Scheduler*/
 
@@ -261,13 +305,105 @@ body {
     padding: 10px;
 }
 
+.scheduler-container p,
+.scheduler-container h3 {
+    margin-bottom: 20px;
+}
+
 #map {
     min-height: 300px;
 }
 
+.scheduler-table-container {
+    margin-top: 20px;
+    overflow-x: scroll;
+}
+
 #scheduler-table {
+    text-align: center;
     font-size: 10px;
 }
 
+#scheduler-table .scheduler-col {
+    width: 18%;
+}
+
+
 /*-----------------------Breakpoint Stlyes*/
 
+/*sm*/
+
+@media (min-width: 576px) {}
+
+/*md*/
+
+@media (min-width: 768px) {
+    .graph-container {
+        overflow-x: hidden;
+    }
+}
+
+/*lg*/
+
+@media (min-width: 992px) {
+    #restaurant-name,
+    .scheduler-nav-btn,
+    .scheduler-search-btn {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+    .scheduler-nav-content li {
+        font-size: 12px;
+    }
+    .scheduler-nav-container {
+        text-align: right;
+    }
+    .scheduler-search-container {
+        text-align: left;
+    }
+    .scheduler-nav-content li {
+        padding-right: 30px;
+    }
+    .scheduler-nav:hover .scheduler-nav-content {
+        max-height: none;
+        opacity: 1;
+        transform: translateY(1);
+    }
+    .scheduler-nav-content {
+        z-index: 1;
+        overflow: auto;
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1e1e1e;
+        transform: translateY(0);
+        -webkit-box-shadow: -34px 36px 25px -8px rgba(30, 30, 30, 1);
+        -moz-box-shadow: -34px 36px 25px -8px rgba(30, 30, 30, 1);
+        box-shadow: -34px 36px 25px -8px rgba(30, 30, 30, 1);
+    }
+    .scheduler-table-container {
+        margin-top: 0;
+        overflow-x: auto;
+    }
+}
+
+/*xl*/
+
+@media (min-width: 1200px) {
+        #restaurant-name,
+    .scheduler-nav-btn,
+    .scheduler-nav-content li,
+    .scheduler-search-btn {
+        font-size: 15px;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+
+/*Medium devices (tablets, 768px and up)*/
+
+/*Large devices (desktops, 992px and up)*/
+
+/*Extra large devices (large desktops, 1200px and up) */
