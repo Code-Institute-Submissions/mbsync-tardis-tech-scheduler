@@ -193,6 +193,12 @@ body {
     text-align: center;
 }
 
+.no-data{
+    font-size: 15px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
 .scheduler-search-btn {
     margin-top: 10px;
     color: #fff;
@@ -231,13 +237,6 @@ body {
     text-align: center;
 }
 
-.scheduler-nav-btn {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-}
-
 .scheduler-nav {
     position: relative;
     display: inline-block;
@@ -248,8 +247,20 @@ body {
     opacity: 1;
 }
 
+.scheduler-nav:hover #scheduler-name,
+.scheduler-nav:hover #scheduler-date{
+    color: #09f;
+}
+
 .scheduler-nav i {
     padding-left: 10px;
+}
+
+.scheduler-nav-btn {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 .scheduler-nav-content {
