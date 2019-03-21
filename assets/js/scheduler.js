@@ -476,8 +476,8 @@ function processData(allData) {
     });
 
 
-function arrayContains(rest, restaurantSearchNames)
-{
+// Restaurant Search Box - checks if entry is in data 
+function arrayContains(rest, restaurantSearchNames) {
     return (restaurantSearchNames.indexOf(rest) > -1);
 }
 
@@ -563,7 +563,6 @@ function getScheduleTable(data, tech, date) {
     tableOfWork = '<tr><th scope="row">AM</th>' + tableMondayAM + tableTuesdayAM + tableWednesdayAM + tableThursdayAM + tableFridayAM + '</tr><tr><th scope="row">PM</th>' + tableMondayPM + tableTuesdayPM + tableWednesdayPM + tableThursdayPM + tableFridayPM + '</tr>'
     
     $('#weekly-scheduler').append(tableOfWork);
-    console.log(tech);
     $('#active-tech').html("").html("Technician: " + tech);
     $('#active-date').html("").html("Week Commencing: " + date);
     $('#active-tech2').html("").html("Technician: " + tech);

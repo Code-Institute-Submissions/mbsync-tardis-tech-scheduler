@@ -4,12 +4,16 @@ This is a prototype website to be put forward as a test bed as an additional fea
 
 Website link: https://jamesgreen21.github.io/mbsync-tardis-tech-scheduler/
 
-### MBSync
+#### MBSync
 Martin Brower is a Global Supply Chain Solutions company whom control a large estate of the McDonalds franchise for storage and supply of product. 
 
 MBSync is a customer facing portal, which allows Martin Brower customers to access information such as delivery time, order details, restaurant KPIs, as well as communicate with Martin Brower. Since its launch, development has been carried out to utilise MBSync for internal functionality, such as performance reporting, a customer service dashboard and many other features.
 
 As part of these development works, the TARDIS Tech Scheduler aims to facilitate the needs of the TARDIS department; an internal department within Martin Brower. The project aims to give quick and concise updates on SalesForce data with graphical displays, using d3, dc and crossfilter, as well as provide a technician Scheduler, which will display the whereabout of each TARDIS Technician, their weekly workload and a Google Maps API to display the desitinations.
+
+#### Data
+
+Please be aware that all data that has been used in this model has been extracted from Martin Brower systems as a CSV file and manipulated for the purposed of the project and test. Implementation would require a direct feed into MB Systems.
 
 ## UX
  
@@ -83,21 +87,25 @@ All charts displayed within the Analytics Dashboard have been tested to ensure a
 
 UX:
 
-1. Go to the ‘Contact’ page
-2. Try to submit the empty form and verify the Bootstrap form is working correctly to highlight in red, fields that are ‘required’
-3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-4. Try to submit the form with all inputs valid and takes you to the Thanks page, confirming submission
+1. Change the 'Filter by Request Status' filter box to 'Open' to confirm 'Open SalesForce Requests' summary
+2. All charts react to the filter changes
+3. Select 'Closed' will result in the 'Open SalesForce Requests' summary to display all zeros, as a sense check the data is live and responsive
+4. Select a segment of any of the charts to perform a filter of the selection, across all charts on the disaply
 
 ### Tech Scheduler
 
-All charts displayed within the Analytics Dashboard have been tested to ensure all data is accurate and as expected. Responsive design is fully functional. 
+The Tech Scheduler has been tested for all types of inputs and changes to each nav option.
 
 UX:
 
-1. Go to the ‘Contact’ page
-2. Try to submit the empty form and verify the Bootstrap form is working correctly to highlight in red, fields that are ‘required’
-3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-4. Try to submit the form with all inputs valid and takes you to the Thanks page, confirming submission
+1. Type a restaurant number or name to display an autofill list of available options. If there are no options, this denotes that the restaurant typed has no outstanding Tech works
+2. Select the relevant restaurant and press the 'Update Scheduler' button to update the Info, Google Map API and table of works
+3. Hover over the 'Tech' dropdown button to reveal all available TARDIS Technicians
+4. Hover over the desired Tech, which will highlight the name. Select to update the Info, Google Map API and table of works
+5. Hover over the 'Date' dropdown button to reveal all available Week Commencing dates from the data
+6. Hover over the desired WC date, which will highlight the date. Select to update the Info, Google Map API and table of works
+7. Google Map - select the clusters displayed as a blue circle with a number denoting the number of markers
+8. Navigate around the map and use the + and - zoom buttons to check and confirm all locations plotted that have been populated within the table of works
 
 ### Display **
 
@@ -111,14 +119,19 @@ Laptop, Desktop and other larger
 
 ### Bugs
 
-The Home page did have some issues with a horizontal scrollbar displaying on different responsive displays. This was caused by a number of CSS styling that has been fixed throughout the project, namely:
+There are currently two bugs that appear in the console once the website has been generated. The TypeError refers to a .length command that returns the count of records within the data set, and is used in a For loop. The count and loop both work having tested it through the console log, however, I have been unable to determine the reason for the bug.
 
-1. The Home page article section – caused by the text beneath the images originally being vertical skewed, which pushed them over the body container in some displays. This feature was removed and tidied to instead have a horizontal skew, which actually works better with the site
-2. The Bio section also overlapped the body container. This was caused issues with overlaying the transparent background over the image to darken the affect. Also fixed
+ - Uncaught (in promise) TypeError: Cannot read property 'length' of undefined
+    at getMapLocations (scheduler.js:666)
+    at initMap (scheduler.js:514)
+    at js?key=AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ&callback=initMap:123
+    at js?key=AIzaSyCsI1fq6JVdHRu4UgMmIuZXCTO0UPzF8JQ&callback=initMap:123
+    
+ - GET https://mbsync-tardis-tech-scheduler-jamesgreen21.c9users.io/favicon.ico 404 (Not Found)
 
 ## Deployment
 
-I have used Cloud9 for developing the website, using the HTML and CSS dev tools on both Firefox and Google Chrome. The code has been pushed up to my GitHub site, with continuous commits throughout the project as it has progressed.
+I have used Cloud9 for developing the website, as well as using the dev tools and console on both Firefox and Google Chrome to fine tune areas of the code and test elements of the scripts. The code has been pushed up to my GitHub, with continuous commits throughout the project as it has progressed.
 
 ## Credits
 
@@ -129,12 +142,8 @@ The following links and sites have been used within the coding and development:
 
 ### Content
 
-- All content has been written and produced by Joe Paris
+- All content has been supplied by Martin Brower UK Ltd for test base purposes. The data used in the model has been extract from MB SalesForce systems
 
 ### Media
 
-- All photos have been provided by Joe Paris
-
-## Acknowledgments
-
-- Thanks to Joe and his clients who provided the content and assisted with the look and feel of the site giving regular feedback
+- All photos have been provided by Martin Brower UK Ltd
