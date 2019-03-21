@@ -107,15 +107,14 @@ UX:
 7. Google Map - select the clusters displayed as a blue circle with a number denoting the number of markers
 8. Navigate around the map and use the + and - zoom buttons to check and confirm all locations plotted that have been populated within the table of works
 
-### Display **
+### Display
 
 The website is mobile-first responsive design, making use of the Bootstrap grid system to layout the DC charts in a way that allows the user to interact with them, whatever their display configurations. 
 
-Mobile Display
+The Analytics Dashboard has been laid out using the Bootstrap grid system to ensure the charts are legible for all devices. X-scrollbars have been included on smaller resolutions to allow the user to see the full chart, without the page width exceeding the screen width.
 
-Tablet Display
-
-Laptop, Desktop and other larger
+The Tech Scheduler has two layouts depending on the resolution. The mobile and table view displays the title details at the top to ensure the user gets a view of the active Technician and Date detail when using the nav controls. The map spans the width of the screen, as does the table of works, to allow better UX. 
+Larger displays see the map reduced to a 4 column grid span (1/3 of the screen), while the title details move over to the right of the screen above the table of works.
 
 ### Bugs
 
@@ -132,13 +131,6 @@ There are currently two bugs that appear in the console once the website has bee
 ## Deployment
 
 I have used Cloud9 for developing the website, as well as using the dev tools and console on both Firefox and Google Chrome to fine tune areas of the code and test elements of the scripts. The code has been pushed up to my GitHub, with continuous commits throughout the project as it has progressed.
-
-## Credits
-
-The following links and sites have been used within the coding and development:
-
-- https://blog.codepen.io/2016/05/13/new-instagram-logo-in-css-four-ways/
-- https://www.jeremycookson.com/top-10-css-hover-effects/
 
 ### Content
 
